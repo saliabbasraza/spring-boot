@@ -5,15 +5,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HelloController {
+public class MainController {
 
     @Value("${app.developer.name}")
     private String developer;
 
     @RequestMapping("/")
     public String index() {
-        return "Greetings from Spring Boot!";
-//        + "Developer : " + developer;
+        return "Greetings from " + developer;
     }
 
 }
