@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Collection;
-
 /**
  * Controller for Student
  */
@@ -19,10 +17,14 @@ import java.util.Collection;
 public class StudentController {
 
     @Autowired
-    private StudentService studentService;
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
+
+    final private StudentService studentService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public Collection<Student> getAll() {
+    public Iterable<Student> getAll() {
         return studentService.getAll();
     }
 

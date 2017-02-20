@@ -1,26 +1,13 @@
 package com.basho.service;
 
-import com.basho.dao.StudentDao;
 import com.basho.entity.Student;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
- * Service class for Student
+ * Interface for Student service
  */
-@Service
-public class StudentService {
+public interface StudentService {
 
-    @Autowired
-    private StudentDao studentDao;
+    Iterable<Student> getAll();
 
-    public List getAll() {
-        return studentDao.getAll();
-    }
-
-    public Student add(Student s) {
-        return studentDao.add(s);
-    }
+    Student add(Student s);
 }
