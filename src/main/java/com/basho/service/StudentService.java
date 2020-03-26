@@ -10,4 +10,10 @@ public interface StudentService {
     Iterable<Student> getAll();
 
     Student add(Student s);
+
+    void delete(long id);
+
+    Student getById(long id);
+
+    Student update(Student s);
 }

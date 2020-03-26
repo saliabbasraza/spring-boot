@@ -29,4 +29,19 @@ public class StudentServiceImpl implements StudentService {
     public Student add(Student s) {
         return studentDao.save(s);
     }
+
+    @Override
+    public void delete(long id) {
+        studentDao.delete(id);
+    }
+
+    @Override
+    public Student getById(long id) {
+        return studentDao.findById(id);
+    }
+
+    @Override
+    public Student update(Student s) {
+        return studentDao.save(s);
+    }
 }

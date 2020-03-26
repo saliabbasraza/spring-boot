@@ -4,14 +4,13 @@ import com.basho.entity.Student;
 import com.basho.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Controller for Student
  */
+@CrossOrigin(origins = {"http://localhost:3000"})
 @RestController
 @RequestMapping("/student")
 public class StudentController {
@@ -23,14 +22,29 @@ public class StudentController {
 
     final private StudentService studentService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping()
     public Iterable<Student> getAll() {
         return studentService.getAll();
     }
 
-    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping()
     public Student add(@RequestBody Student student) {
         return studentService.add(student);
     }
 
+    @PutMapping(path = {"/{id}"})
+    public Student update(@PathVariable long id, @RequestBody Student student) {
+        return studentService.update(student);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteStudent(@PathVariable long id) {
+        studentService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{id}")
+    public Student getById(@PathVariable long id) {
+        return studentService.getById(id);
+    }
 }

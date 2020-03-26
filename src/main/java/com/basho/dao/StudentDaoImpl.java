@@ -26,4 +26,14 @@ public class StudentDaoImpl implements StudentDao {
     public Student save(Student s) {
         return studentDaoCrud.save(s);
     }
+
+    @Override
+    public void delete(long id) {
+        studentDaoCrud.delete(id);
+    }
+
+    @Override
+    public Student findById(long id) {
+        return studentDaoCrud.findOne(id);
+    }
 }

@@ -10,5 +10,9 @@ public interface StudentDao {
     Iterable<Student> findAll();
 
     Student save(Student s);
+
+    void delete(long id);
+
+    Student findById(long id);
 }
 
